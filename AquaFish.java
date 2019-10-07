@@ -81,6 +81,7 @@ public class AquaFish
 
         // Initialize this fish's color.
         this.color = newColor;
+        
     }
 
     /**
