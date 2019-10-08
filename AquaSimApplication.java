@@ -29,12 +29,12 @@ public class AquaSimApplication
 
         // Construct the aquarium.  Specify its dimensions when creating it.
         Aquarium aqua;                 // create reference to an Aquarium ...
-        aqua = new Aquarium(600, 480); // ... object that has now been created
-
+        //aqua = new Aquarium(600, 480); // ... object that has now been created
+        aqua = new Aquarium(600, 480);
         // Construct fish and add them to the aquarium.
         AquaFish fish1 = new AquaFish(aqua, Color.RED);aqua.add(fish1);
-        AquaFish fish2 = new AquaFish(aqua);aqua.add(fish2);
-        AquaFish nemo = new AquaFish(aqua, Color.ORANGE);aqua.add(nemo);
+        AquaFish fish2 = new AquaFish(aqua, Color.BLUE);aqua.add(fish2);
+        AquaFish nemo = new AquaFish(aqua, Color.BLUE);aqua.add(nemo);
         
         // Construct a graphical user interface (GUI) to display and control
         // the simulation.  The user interface needs to know about the
@@ -57,10 +57,12 @@ public class AquaSimApplication
         // Remind user how to quit application.
         userInterface.println ("Close GUI display window to quit.");
         // Make the fish move and redisplay
-        for(int i = 0; i<10; i++) {
-        fish1.moveForward();
-        fish2.moveForward();
-        nemo.moveForward();
+        for(int i = 0; i<30; i--) {
+        
+        if (fish1.atWall()) fish1.changeDir();fish1.moveForward();
+        if (fish2.atWall()) fish2.changeDir();fish2.moveForward();
+        if (nemo.atWall()) nemo.changeDir();nemo.moveForward();
+        
         userInterface.showAquarium();
     }
 
